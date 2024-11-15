@@ -93,7 +93,7 @@ class Repairsessions(Base):
     id = Column(Integer, primary_key=True)
     order_number = Column(String(50), nullable=False)
     date_start = Column(DateTime, nullable=False)
-    date_end = Column(DateTime, nullable=True)
+    date_end = Column(DateTime, nullable=False)
     malfunctions = Column(String(255), nullable=True)
     order_comment = Column(String(255), nullable=True)
     total_sum = Column(Integer, nullable=False)

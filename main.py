@@ -54,7 +54,7 @@ def create_client(client: ClientCreate, db: Session = Depends(get_db)):
     return new_client
 
 @app.put("/clients/{client_id}", response_model=Client)
-def update_client(client_id: int, client: Client, db: Session = Depends(get_db)):
+def update_client(client_id: int, client: ClientCreate, db: Session = Depends(get_db)):
     db_client = db.query(Clients).filter(Clients.id == client_id).first()
     if db_client is None:
         raise HTTPException(status_code=404, detail="Client not found")
@@ -97,7 +97,7 @@ def create_master(master: MasterCreate, db: Session = Depends(get_db)):
     return new_master
 
 @app.put("/masters/{master_id}", response_model=Master)
-def update_master(master_id: int, master: Master, db: Session = Depends(get_db)):
+def update_master(master_id: int, master: MasterCreate, db: Session = Depends(get_db)):
     db_master = db.query(Masters).filter(Masters.id == master_id).first()
     if db_master is None:
         raise HTTPException(status_code=404, detail="Master not found")
@@ -140,7 +140,7 @@ def create_providedservice(service: ProvidedServiceCreate, db: Session = Depends
     return new_service
 
 @app.put("/providedservices/{service_id}", response_model=ProvidedService)
-def update_providedservice(service_id: int, service: ProvidedService, db: Session = Depends(get_db)):
+def update_providedservice(service_id: int, service: ProvidedServiceCreate, db: Session = Depends(get_db)):
     db_service = db.query(Providedservices).filter(Providedservices.id == service_id).first()
     if db_service is None:
         raise HTTPException(status_code=404, detail="Provided Service not found")
